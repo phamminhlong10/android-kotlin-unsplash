@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@drawable/ic_baseline_photo_album_24"
+        android:id="@+id/mainFragment"
+        android:enabled="true"
+        android:title="@string/for_you" />
+    <item
+        android:icon="@drawable/ic_baseline_category_24"
+        android:id="@+id/topicFragment"
+        android:enabled="true"
+        android:title="Topic"/>
+
+    <item android:title="Item" />
+</menu>
