@@ -2,13 +2,14 @@ package com.kotlin.unsplash.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.unsplash.databinding.ItemImageBinding
 import com.kotlin.unsplash.domain.Photo
 
-class PhotoListAdapter: ListAdapter<Photo, PhotoListAdapter.ViewHolder>(ImageDiffCallback()){
+class PhotoListAdapter: PagingDataAdapter<Photo, PhotoListAdapter.ViewHolder>(PhotoDiffCallback()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -16,10 +17,12 @@ class PhotoListAdapter: ListAdapter<Photo, PhotoListAdapter.ViewHolder>(ImageDif
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
-        holder.bind(item)
+        if (item != null) {
+            holder.bind(item)
+        }
     }
 
-    class ImageDiffCallback: DiffUtil.ItemCallback<Photo>() {
+    class PhotoDiffCallback: DiffUtil.ItemCallback<Photo>() {
         override fun areContentsTheSame(oldItem: Photo, newItem: Photo): Boolean {
             return oldItem == newItem
         }

@@ -2,6 +2,7 @@ buildscript {
     ext{
         version_retrofit = "2.9.0"
         version_moshi = "1.9.3"
+        paging_version = "3.1.1"
     }
 }
 
@@ -67,4 +68,7 @@ dependencies {
 
     //Retrofit x Moshi
     implementation "com.squareup.retrofit2:converter-moshi:$version_retrofit"
+
+    //Paging 3
+    implementation "androidx.paging:paging-runtime:$paging_version"
 }

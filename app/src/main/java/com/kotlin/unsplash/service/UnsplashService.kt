@@ -20,7 +20,7 @@ private val retrofit = Retrofit.Builder().addConverterFactory(MoshiConverterFact
 interface UnsplashService {
 
     @GET("photos")
-    suspend fun getListPhoto(@Query("client_id") type: String): List<Photo>
+    suspend fun getListPhoto(@Query("client_id")clientID: String, @Query("page") page: Int?): List<Photo>
 }
 
 object UnsplashApi{
