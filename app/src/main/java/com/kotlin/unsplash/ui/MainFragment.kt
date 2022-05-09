@@ -51,7 +51,7 @@ class MainFragment : Fragment() {
 //            Log.e("Results", listResult.toString())
 //        }
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 }

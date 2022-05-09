@@ -21,14 +21,6 @@
                 tools:ignore="SpeakableTextPresentCheck"
                 tools:listitem="@layout/item_image" />
 
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:id="@+id/recycler_image"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                tools:ignore="SpeakableTextPresentCheck"-->
-<!--                tools:listitem="@layout/item_image" />-->
             
         </LinearLayout>
 </layout>

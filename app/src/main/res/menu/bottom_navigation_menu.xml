@@ -12,5 +12,7 @@
         android:enabled="true"
         android:title="Topic"/>
 
-    <item android:title="Item" />
+    <item
+        android:icon="@drawable/ic_baseline_bookmarks_24"
+        android:title="Gallery" />
 </menu>

@@ -1,6 +1,7 @@
 package com.kotlin.unsplash.service
 
 import com.kotlin.unsplash.domain.Photo
+import com.kotlin.unsplash.domain.Topic
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -21,6 +22,9 @@ interface UnsplashService {
 
     @GET("photos")
     suspend fun getListPhoto(@Query("client_id")clientID: String, @Query("page") page: Int?): List<Photo>
+
+    @GET("topics")
+    suspend fun getListTopic(@Query("client_id")clientID: String, @Query("per_page") perPage: Int?): List<Topic>
 }
 
 object UnsplashApi{
