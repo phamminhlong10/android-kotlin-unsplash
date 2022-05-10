@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.kotlin.unsplash.R
 import com.kotlin.unsplash.adapter.TopicListAdapter
@@ -33,12 +34,23 @@ class TopicFragment : Fragment() {
         val unsplashService = UnsplashApi.retrofitService
         val application = requireNotNull(this.activity).application
 
+
         val viewModel = ViewModelProvider(this, TopicViewModelFactory(unsplashService, application)).get(TopicViewModel::class.java)
-        val adapter = TopicListAdapter()
+        binding.viewModel = viewModel
+        val adapter = TopicListAdapter(TopicListAdapter.OnClickListener{
+            viewModel.topicDetails(it)
+        })
 
         viewModel.listTopic.observe(viewLifecycleOwner, Observer {
             it?.let {
                 adapter.submitList(it)
+            }
+        })
+
+        viewModel.navigateToSelectedTopic.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                this.findNavController().navigate(TopicFragmentDirections.actionTopicFragmentToTopicPhotoFragment(it))
+                viewModel.navigateTopicDetailsComplete()
             }
         })
 

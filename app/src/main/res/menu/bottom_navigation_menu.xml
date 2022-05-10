@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_baseline_category_24"
         android:id="@+id/topicFragment"
         android:enabled="true"
-        android:title="Topic"/>
+        android:title="Topics"/>
 
     <item
         android:icon="@drawable/ic_baseline_bookmarks_24"

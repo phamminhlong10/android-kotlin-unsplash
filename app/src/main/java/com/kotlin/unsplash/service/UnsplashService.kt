@@ -6,8 +6,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 
 const val CLIENT_ID = "ZrI5lFMen8VP2J_NriVgXcRZqyZn_lqO2IA7ZM5jsNE"
@@ -25,6 +24,9 @@ interface UnsplashService {
 
     @GET("topics")
     suspend fun getListTopic(@Query("client_id")clientID: String, @Query("per_page") perPage: Int?): List<Topic>
+
+    @GET("topics/{id_or_slug}/photos")
+    suspend fun getListTopicPhoto(@Path("id_or_slug")id: String?, @Query("client_id")clientID: String, @Query("page") page: Int?): List<Photo>
 }
 
 object UnsplashApi{

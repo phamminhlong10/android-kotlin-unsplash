@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.kotlin.unsplash.R
 import com.kotlin.unsplash.adapter.PhotoListAdapter
 import com.kotlin.unsplash.databinding.FragmentMainBinding
+import com.kotlin.unsplash.service.CLIENT_ID
 import com.kotlin.unsplash.service.UnsplashApi
 import com.kotlin.unsplash.viewmodel.FirstViewModel
 import com.kotlin.unsplash.viewmodel.FirstViewModelFactory
@@ -45,11 +46,6 @@ class MainFragment : Fragment() {
             }
         }
         binding.recyclerImage.adapter = adapter
-
-//        lifecycleScope.launch {
-//            var listResult = UnsplashApi.retrofitService.getListPhoto(CLIENT_ID)
-//            Log.e("Results", listResult.toString())
-//        }
 
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root

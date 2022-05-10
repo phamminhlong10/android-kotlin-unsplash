@@ -7,6 +7,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.kotlin.unsplash.data.MAIN_SCREEN
 import com.kotlin.unsplash.data.PhotoPagingSource
 import com.kotlin.unsplash.domain.Photo
 import com.kotlin.unsplash.service.CLIENT_ID
@@ -21,8 +22,8 @@ class FirstViewModel(private val unsplashService: UnsplashService, application: 
     val listPhoto: LiveData<List<Photo>>
     get() = _listPhoto
 
-    val photo: Flow<PagingData<Photo>> = Pager(PagingConfig(pageSize = 40)) {
-        PhotoPagingSource(unsplashService)
+    val photo: Flow<PagingData<Photo>> = Pager(PagingConfig(pageSize = 10)) {
+        PhotoPagingSource(unsplashService, MAIN_SCREEN, null)
     }.flow
         .cachedIn(viewModelScope)
 

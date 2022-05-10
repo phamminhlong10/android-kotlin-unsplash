@@ -29,6 +29,18 @@ class TopicViewModel(private val unsplashService: UnsplashService, application: 
             }
         }
     }
+
+    private val _navigateToSelectedTopic = MutableLiveData<Topic?>()
+    val navigateToSelectedTopic: LiveData<Topic?>
+    get() = _navigateToSelectedTopic
+
+    fun topicDetails(topic: Topic){
+        _navigateToSelectedTopic.value = topic
+    }
+
+    fun navigateTopicDetailsComplete(){
+        _navigateToSelectedTopic.value = null
+    }
 }
 
 class TopicViewModelFactory(private val unsplashService: UnsplashService, private val application: Application): ViewModelProvider.Factory{

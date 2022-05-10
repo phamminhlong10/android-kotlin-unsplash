@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.unsplash.databinding.ItemTopicBinding
 import com.kotlin.unsplash.domain.Topic
 
-class TopicListAdapter: ListAdapter<Topic, TopicListAdapter.ViewHolder>(DiffCallBackTopic()){
+class TopicListAdapter(val onClickListener: OnClickListener): ListAdapter<Topic, TopicListAdapter.ViewHolder>(DiffCallBackTopic()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -17,6 +17,9 @@ class TopicListAdapter: ListAdapter<Topic, TopicListAdapter.ViewHolder>(DiffCall
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item  = getItem(position)
         holder.bind(item)
+        holder.itemView.setOnClickListener {
+            onClickListener.clickListener(item)
+        }
     }
 
     class ViewHolder(private val binding: ItemTopicBinding): RecyclerView.ViewHolder(binding.root) {
@@ -44,6 +47,7 @@ class TopicListAdapter: ListAdapter<Topic, TopicListAdapter.ViewHolder>(DiffCall
         }
     }
 
-
-
+    class OnClickListener(val clickListener: (topic: Topic) -> Unit){
+        fun onClick(topic: Topic) = clickListener(topic)
+    }
 }

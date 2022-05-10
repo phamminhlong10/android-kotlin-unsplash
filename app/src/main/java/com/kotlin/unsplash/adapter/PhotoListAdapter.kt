@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.unsplash.databinding.ItemImageBinding
 import com.kotlin.unsplash.domain.Photo
+import com.kotlin.unsplash.domain.Topic
 
 class PhotoListAdapter: PagingDataAdapter<Photo, PhotoListAdapter.ViewHolder>(PhotoDiffCallback()){
 
@@ -46,7 +47,4 @@ class PhotoListAdapter: PagingDataAdapter<Photo, PhotoListAdapter.ViewHolder>(Ph
             }
         }
     }
-
-
-
 }
