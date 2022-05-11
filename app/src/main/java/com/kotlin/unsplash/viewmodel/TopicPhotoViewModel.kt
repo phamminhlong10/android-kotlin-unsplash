@@ -1,10 +1,7 @@
 package com.kotlin.unsplash.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -18,6 +15,18 @@ import kotlinx.coroutines.flow.Flow
 
 class TopicPhotoViewModel(private val topic: Topic, private val unsplashService: UnsplashService, application: Application)
     : AndroidViewModel(application) {
+
+    private val _navigateToSelectedPhoto = MutableLiveData<Photo?>()
+    val navigateToSelectedPhoto: LiveData<Photo?>
+        get() = _navigateToSelectedPhoto
+
+    fun photoDetails(photo: Photo){
+        _navigateToSelectedPhoto.value = photo
+    }
+
+    fun navigatePhotoDetailsComplete(){
+        _navigateToSelectedPhoto.value = null
+    }
 
     val photo: Flow<PagingData<Photo>> = Pager(PagingConfig(pageSize = 10)) {
         PhotoPagingSource(unsplashService, TOPIC_PHOTO_SCREEN, topic)

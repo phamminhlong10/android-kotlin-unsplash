@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.unsplash.databinding.ItemTopicBinding
 import com.kotlin.unsplash.domain.Topic
+import com.kotlin.unsplash.util.OnClickListener
 
-class TopicListAdapter(val onClickListener: OnClickListener): ListAdapter<Topic, TopicListAdapter.ViewHolder>(DiffCallBackTopic()){
+class TopicListAdapter(private val onClickListener: OnClickListener<Topic>): ListAdapter<Topic, TopicListAdapter.ViewHolder>(DiffCallBackTopic()){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(parent)
@@ -45,9 +46,5 @@ class TopicListAdapter(val onClickListener: OnClickListener): ListAdapter<Topic,
         override fun areContentsTheSame(oldItem: Topic, newItem: Topic): Boolean {
             return oldItem == newItem
         }
-    }
-
-    class OnClickListener(val clickListener: (topic: Topic) -> Unit){
-        fun onClick(topic: Topic) = clickListener(topic)
     }
 }

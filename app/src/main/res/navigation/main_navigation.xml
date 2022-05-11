@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.kotlin.unsplash.ui.MainFragment"
-        android:label="For you" />
+        android:label="For you" >
+        <action
+            android:id="@+id/action_mainFragment_to_photoDetailFragment"
+            app:destination="@id/photoDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/topicFragment"
         android:name="com.kotlin.unsplash.ui.TopicFragment"
@@ -23,5 +27,16 @@
         <argument
             android:name="topic"
             app:argType="com.kotlin.unsplash.domain.Topic" />
+        <action
+            android:id="@+id/action_topicPhotoFragment_to_photoDetailFragment"
+            app:destination="@id/photoDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoDetailFragment"
+        android:name="com.kotlin.unsplash.ui.PhotoDetailFragment"
+        tools:layout="@layout/fragment_photo_detail" >
+        <argument
+            android:name="photo"
+            app:argType="com.kotlin.unsplash.domain.Photo" />
     </fragment>
 </navigation>

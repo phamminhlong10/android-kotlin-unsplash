@@ -10,17 +10,31 @@ import androidx.paging.cachedIn
 import com.kotlin.unsplash.data.MAIN_SCREEN
 import com.kotlin.unsplash.data.PhotoPagingSource
 import com.kotlin.unsplash.domain.Photo
+import com.kotlin.unsplash.domain.Topic
 import com.kotlin.unsplash.service.CLIENT_ID
 import com.kotlin.unsplash.service.UnsplashApi
 import com.kotlin.unsplash.service.UnsplashService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-class FirstViewModel(private val unsplashService: UnsplashService, application: Application) : AndroidViewModel(application) {
+class MainViewModel(private val unsplashService: UnsplashService, application: Application) : AndroidViewModel(application) {
 
     private val _listPhoto = MutableLiveData<List<Photo>>()
     val listPhoto: LiveData<List<Photo>>
     get() = _listPhoto
+
+
+    private val _navigateToSelectedPhoto = MutableLiveData<Photo?>()
+    val navigateToSelectedPhoto: LiveData<Photo?>
+        get() = _navigateToSelectedPhoto
+
+    fun photoDetails(photo: Photo){
+        _navigateToSelectedPhoto.value = photo
+    }
+
+    fun navigatePhotoDetailsComplete(){
+        _navigateToSelectedPhoto.value = null
+    }
 
     val photo: Flow<PagingData<Photo>> = Pager(PagingConfig(pageSize = 10)) {
         PhotoPagingSource(unsplashService, MAIN_SCREEN, null)
@@ -42,11 +56,11 @@ class FirstViewModel(private val unsplashService: UnsplashService, application: 
     }
 }
 
-class FirstViewModelFactory(private val unsplashService: UnsplashService, private val application: Application): ViewModelProvider.Factory{
+class MainViewModelFactory(private val unsplashService: UnsplashService, private val application: Application): ViewModelProvider.Factory{
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(FirstViewModel::class.java)){
-            return FirstViewModel(unsplashService, application) as T
+        if(modelClass.isAssignableFrom(MainViewModel::class.java)){
+            return MainViewModel(unsplashService, application) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

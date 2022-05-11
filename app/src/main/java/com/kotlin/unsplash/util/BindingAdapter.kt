@@ -6,7 +6,7 @@ import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
 
 @BindingAdapter("imageNetwork")
-fun loadImageNetwork(imageView: ImageView, url: String){
+fun loadImageNetwork(imageView: ImageView, url: String?){
     try {
         Picasso.get().load(url).into(imageView)
     }catch (e: Exception){

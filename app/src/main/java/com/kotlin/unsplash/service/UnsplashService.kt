@@ -27,6 +27,10 @@ interface UnsplashService {
 
     @GET("topics/{id_or_slug}/photos")
     suspend fun getListTopicPhoto(@Path("id_or_slug")id: String?, @Query("client_id")clientID: String, @Query("page") page: Int?): List<Photo>
+
+
+    @GET("photos/{id}")
+    suspend fun getASinglePhoto(@Path("id")id: String, @Query("client_id")clientID: String): Photo
 }
 
 object UnsplashApi{

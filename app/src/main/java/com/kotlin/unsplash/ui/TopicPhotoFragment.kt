@@ -1,18 +1,16 @@
 package com.kotlin.unsplash.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.kotlin.unsplash.MainActivity
@@ -20,9 +18,9 @@ import com.kotlin.unsplash.R
 import com.kotlin.unsplash.adapter.PhotoListAdapter
 import com.kotlin.unsplash.databinding.FragmentTopicPhotoBinding
 import com.kotlin.unsplash.service.UnsplashApi
+import com.kotlin.unsplash.util.OnClickListener
 import com.kotlin.unsplash.viewmodel.TopicPhotoViewModel
 import com.kotlin.unsplash.viewmodel.TopicPhotoViewModelFactory
-import com.kotlin.unsplash.viewmodel.TopicViewModelFactory
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -51,7 +49,18 @@ class TopicPhotoFragment : Fragment() {
         binding.recyclerTopicPhoto.layoutManager = layoutManager
 
 
-        val adapter = PhotoListAdapter()
+        val adapter = PhotoListAdapter(OnClickListener {
+            viewModel.photoDetails(it)
+        })
+
+        viewModel.navigateToSelectedPhoto.observe(viewLifecycleOwner, Observer {
+            it?.let {
+                this.findNavController().navigate(TopicPhotoFragmentDirections.actionTopicPhotoFragmentToPhotoDetailFragment(it))
+                viewModel.navigatePhotoDetailsComplete()
+            }
+        })
+
+
         lifecycleScope.launch {
             viewModel.photo.collectLatest {
                 adapter.submitData(it)
