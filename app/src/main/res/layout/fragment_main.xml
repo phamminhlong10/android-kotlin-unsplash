@@ -20,7 +20,5 @@
                 android:layout_height="wrap_content"
                 tools:ignore="SpeakableTextPresentCheck"
                 tools:listitem="@layout/item_image" />
-
-            
         </LinearLayout>
 </layout>

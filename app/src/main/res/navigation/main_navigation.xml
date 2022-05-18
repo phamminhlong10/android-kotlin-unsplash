@@ -39,4 +39,21 @@
             android:name="photo"
             app:argType="com.kotlin.unsplash.domain.Photo" />
     </fragment>
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.kotlin.unsplash.ui.GalleryFragment"
+        android:label="Your favorites"
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_galleryFragment_to_photoDBDetailFragment"
+            app:destination="@id/photoDBDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoDBDetailFragment"
+        android:name="com.kotlin.unsplash.ui.PhotoDBDetailFragment"
+        android:label="PhotoDBDetailFragment" >
+        <argument
+            android:name="PhotoDB"
+            app:argType="com.kotlin.unsplash.database.PhotoDB" />
+    </fragment>
 </navigation>

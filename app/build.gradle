@@ -3,6 +3,7 @@ buildscript {
         version_retrofit = "2.9.0"
         version_moshi = "1.9.3"
         paging_version = "3.1.1"
+        room_version = "2.4.2"
     }
 }
 
@@ -12,6 +13,7 @@ plugins {
     id 'kotlin-kapt'
     id 'kotlin-parcelize'
     id 'androidx.navigation.safeargs'
+    id 'kotlin-android'
 }
 
 
@@ -24,7 +26,7 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -72,4 +74,10 @@ dependencies {
 
     //Paging 3
     implementation "androidx.paging:paging-runtime:$paging_version"
+
+    //Room database
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    // Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
 }

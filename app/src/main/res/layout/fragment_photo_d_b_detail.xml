@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.kotlin.unsplash.viewmodel.PhotoDetailViewModel" />
+            type="com.kotlin.unsplash.viewmodel.PhotoDBDetailViewModel" />
     </data>
 
     <RelativeLayout
@@ -18,7 +18,7 @@
             android:adjustViewBounds="true"
             android:id="@+id/photo_view"
             android:scaleType="centerCrop"
-            imageNetwork="@{viewModel.photo.urls.regular}"
+            imageNetwork="@{viewModel.photoDB.url}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:srcCompat="@tools:sample/avatars" />
@@ -36,7 +36,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/photo_by(viewModel.photo.user.name)}"
+                android:text="@{@string/photo_by(viewModel.photoDB.user)}"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
                 android:textColor="@color/white" />
 
@@ -47,14 +47,14 @@
                 android:layout_height="wrap_content">
 
                 <Button
-                    android:id="@+id/explore_photo_button"
+                    android:id="@+id/explore_photoDB_button"
                     style="@style/Widget.Material3.Button.ElevatedButton"
                     android:text="Explore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
                 <Button
-                    android:id="@+id/set_wallpaper_button"
+                    android:id="@+id/set_wallpaper_photoDB"
                     android:layout_alignParentRight="true"
                     android:text="SET WALLPAPER"
                     android:layout_width="wrap_content"
@@ -138,32 +138,32 @@
 
 
 
-        <LinearLayout
-            android:gravity="center"
-            android:id="@+id/progress_bar"
-            android:visibility="visible"
-            android:background="?colorOnPrimary"
-            android:layout_centerInParent="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+<!--        <LinearLayout-->
+<!--            android:gravity="center"-->
+<!--            android:id="@+id/progress_bar"-->
+<!--            android:visibility="visible"-->
+<!--            android:background="?colorOnPrimary"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="vertical">-->
 
-            <TextView
-                android:gravity="center"
-                android:text="Rate limit exceeded from server"
-                android:visibility="gone"
-                android:id="@+id/text_error"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+<!--            <TextView-->
+<!--                android:gravity="center"-->
+<!--                android:text="Rate limit exceeded from server"-->
+<!--                android:visibility="gone"-->
+<!--                android:id="@+id/text_error"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"/>-->
 
-            <com.google.android.material.progressindicator.CircularProgressIndicator
-                android:id="@+id/circular_progress_bar"
-                android:layout_gravity="center"
-                android:indeterminate="true"
-                android:visibility="visible"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+<!--            <com.google.android.material.progressindicator.CircularProgressIndicator-->
+<!--                android:id="@+id/circular_progress_bar"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:indeterminate="true"-->
+<!--                android:visibility="visible"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"/>-->
+<!--        </LinearLayout>-->
 
     </RelativeLayout>
 
