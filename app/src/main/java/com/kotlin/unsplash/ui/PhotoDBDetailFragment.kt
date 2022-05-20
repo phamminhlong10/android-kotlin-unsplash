@@ -19,6 +19,7 @@ import androidx.navigation.fragment.navArgs
 import com.kotlin.unsplash.MainActivity
 import com.kotlin.unsplash.R
 import com.kotlin.unsplash.databinding.FragmentPhotoDBDetailBinding
+import com.kotlin.unsplash.util.WallpaperEvent
 import com.kotlin.unsplash.viewmodel.PhotoDBDetailViewModel
 import com.kotlin.unsplash.viewmodel.PhotoDBDetailViewModelFactory
 import java.lang.Exception
@@ -41,7 +42,7 @@ class PhotoDBDetailFragment : Fragment() {
         binding.setWallpaperPhotoDB.setOnClickListener {
             viewModel.photoDB.observe(viewLifecycleOwner, Observer {
                 if (it != null) {
-                    setWallpaper(application)
+                    WallpaperEvent().showAlertDialog(binding.photoView.drawable.toBitmap(), application, requireNotNull(this@PhotoDBDetailFragment.context))
                 }
             })
         }
@@ -49,7 +50,7 @@ class PhotoDBDetailFragment : Fragment() {
         binding.explorePhotoDBButton.setOnClickListener {
             viewModel.photoDB.observe(viewLifecycleOwner, Observer {
                 if(it != null){
-                    explorePhoto(it.id)
+                    WallpaperEvent().explorePhoto(it.id, requireNotNull(this@PhotoDBDetailFragment.context))
                 }
             })
         }
@@ -59,23 +60,5 @@ class PhotoDBDetailFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
-    }
-
-
-    private fun setWallpaper(context: Context){
-        try{
-            val bitmap = binding.photoView.drawable.toBitmap()
-            val wallpaperManager = WallpaperManager.getInstance(context)
-            wallpaperManager.setBitmap(bitmap)
-            Toast.makeText(context, "Set wallpaper successfully", Toast.LENGTH_LONG).show()
-        }catch (e: Exception){
-            Log.e("Exception", e.toString())
-        }
-    }
-
-    private fun explorePhoto(id: String?){
-        val url = "https://unsplash.com/photos/${id}"
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(intent)
     }
 }
