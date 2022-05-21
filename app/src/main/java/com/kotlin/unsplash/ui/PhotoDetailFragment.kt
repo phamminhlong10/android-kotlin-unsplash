@@ -60,7 +60,8 @@ class PhotoDetailFragment : Fragment() {
         binding.setWallpaperButton.setOnClickListener {
             viewModel.photo.observe(viewLifecycleOwner, Observer {
                 if (it != null) {
-                    WallpaperEvent().showAlertDialog(binding.photoView.drawable.toBitmap(), application, requireNotNull(this@PhotoDetailFragment.context))
+                    WallpaperEvent().showAlertDialog(binding.photoView.drawable.toBitmap(), application,
+                        requireNotNull(this@PhotoDetailFragment.context))
                 }
             })
         }

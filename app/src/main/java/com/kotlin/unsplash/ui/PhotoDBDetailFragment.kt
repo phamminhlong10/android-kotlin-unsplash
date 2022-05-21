@@ -42,7 +42,8 @@ class PhotoDBDetailFragment : Fragment() {
         binding.setWallpaperPhotoDB.setOnClickListener {
             viewModel.photoDB.observe(viewLifecycleOwner, Observer {
                 if (it != null) {
-                    WallpaperEvent().showAlertDialog(binding.photoView.drawable.toBitmap(), application, requireNotNull(this@PhotoDBDetailFragment.context))
+                    WallpaperEvent().showAlertDialog(binding.photoView.drawable.toBitmap(), application,
+                        requireNotNull(this@PhotoDBDetailFragment.context))
                 }
             })
         }
