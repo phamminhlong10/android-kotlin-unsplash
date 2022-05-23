@@ -44,6 +44,7 @@ class TopicViewModel(private val unsplashService: UnsplashService, application: 
 }
 
 class TopicViewModelFactory(private val unsplashService: UnsplashService, private val application: Application): ViewModelProvider.Factory{
+    @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(TopicViewModel::class.java)){
             return TopicViewModel(unsplashService, application) as T

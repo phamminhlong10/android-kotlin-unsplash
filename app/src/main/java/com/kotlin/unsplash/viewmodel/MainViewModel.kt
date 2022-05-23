@@ -57,7 +57,7 @@ class MainViewModel(private val unsplashService: UnsplashService, application: A
 }
 
 class MainViewModelFactory(private val unsplashService: UnsplashService, private val application: Application): ViewModelProvider.Factory{
-
+    @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(MainViewModel::class.java)){
             return MainViewModel(unsplashService, application) as T

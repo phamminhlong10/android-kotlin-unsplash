@@ -12,10 +12,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import java.lang.Exception
 
 class WallpaperEvent {
@@ -97,7 +94,7 @@ class WallpaperEvent {
         val items = arrayOf("Set wallpaper", "Set lockscreen", "Both")
         contextFragment.let {
             MaterialAlertDialogBuilder(it).setTitle("Set Wallpaper")
-                .setItems(items){ dialog, which ->
+                .setItems(items){ _, which ->
                     when(which){
                         0 -> onSetWallpaper(bitmap, context)
                         1 -> onSetLockScreen(bitmap, context)

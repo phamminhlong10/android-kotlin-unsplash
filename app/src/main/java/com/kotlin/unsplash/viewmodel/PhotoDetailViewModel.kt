@@ -15,14 +15,14 @@ import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 class PhotoDetailViewModel(private val database: PhotoDao, private val item: Photo, private val unsplashService: UnsplashService,
-                           application: Application): AndroidViewModel(Application()) {
+                           application: Application): AndroidViewModel(application) {
     private val _photo = MutableLiveData<Photo?>()
     val photo: LiveData<Photo?>
-    get() = _photo
+        get() = _photo
 
     private val _showToast  = MutableLiveData<Boolean>()
     val showToast: LiveData<Boolean>
-    get() = _showToast
+        get() = _showToast
 
     init {
         responsePhoto()
@@ -30,22 +30,20 @@ class PhotoDetailViewModel(private val database: PhotoDao, private val item: Pho
 
     private fun responsePhoto(){
         viewModelScope.launch {
-           try {
-               val result = unsplashService.getASinglePhoto(item.id, CLIENT_ID)
-               _photo.value = result
-           }catch (e: Exception){
+            try {
+                val result = unsplashService.getASinglePhoto(item.id, CLIENT_ID)
+                _photo.value = result
+            }catch (e: Exception){
                 _photo.value = null
-           }
+            }
         }
     }
 
     private suspend fun insert(){
         withContext(Dispatchers.IO){
-            if(photo != null){
-                val item = photo.value?.asDatabaseModel()
-                if (item != null) {
-                    database.insertPhoto(item)
-                }
+            val item = photo.value?.asDatabaseModel()
+            if (item != null) {
+                database.insertPhoto(item)
             }
         }
     }
@@ -64,6 +62,7 @@ class PhotoDetailViewModel(private val database: PhotoDao, private val item: Pho
 
 class PhotoDetailViewModelFactory(private val database: PhotoDao, private val item: Photo, private val unsplashService: UnsplashService,
                                   val application: Application): ViewModelProvider.Factory{
+    @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if(modelClass.isAssignableFrom(PhotoDetailViewModel::class.java)){
             return PhotoDetailViewModel(database, item, unsplashService, application) as T

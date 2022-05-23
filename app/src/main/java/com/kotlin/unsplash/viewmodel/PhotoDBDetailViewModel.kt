@@ -16,6 +16,7 @@ class PhotoDBDetailViewModel(private val item: PhotoDB, application: Application
 
 
 class PhotoDBDetailViewModelFactory(private val item: PhotoDB, val application: Application): ViewModelProvider.Factory{
+    @Suppress("unchecked_cast")
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(PhotoDBDetailViewModel::class.java)){
             return PhotoDBDetailViewModel(item, application) as T

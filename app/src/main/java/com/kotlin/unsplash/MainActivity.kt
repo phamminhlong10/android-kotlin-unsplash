@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
             when(destination.id){
                 R.id.photoDetailFragment -> binding.bottomNavigationView.visibility = View.GONE
                 R.id.photoDBDetailFragment -> binding.bottomNavigationView.visibility = View.GONE
+                R.id.topicPhotoFragment -> binding.bottomNavigationView.visibility = View.GONE
                 else -> binding.bottomNavigationView.visibility = View.VISIBLE
             }
         }
@@ -32,6 +33,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = this.findNavController(R.id.nav_host_fragment)
-        return navController.navigateUp() || super.onSupportNavigateUp()
+        return navController.navigateUp()
     }
 }

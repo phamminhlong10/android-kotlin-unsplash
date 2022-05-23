@@ -15,7 +15,7 @@ data class Photo(
     val updateAt: String,
     val width: Int,
     val height: Int,
-    val user: User?,
+    val user: User,
     val urls: UrlPhoto,
 ): Parcelable
 
@@ -26,5 +26,5 @@ fun Photo.asDatabaseModel() = PhotoDB(
     width = width,
     height = height,
     url = urls.regular,
-    user = user!!.name
+    user = user.name
 )
