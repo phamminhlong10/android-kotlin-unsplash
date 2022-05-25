@@ -1,7 +1,6 @@
 package com.kotlin.unsplash.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -9,8 +8,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.kotlin.unsplash.data.MAIN_SCREEN
 import com.kotlin.unsplash.data.PhotoPagingSource
-import com.kotlin.unsplash.domain.Photo
-import com.kotlin.unsplash.domain.Topic
+import com.kotlin.unsplash.models.Photo
 import com.kotlin.unsplash.service.CLIENT_ID
 import com.kotlin.unsplash.service.UnsplashApi
 import com.kotlin.unsplash.service.UnsplashService

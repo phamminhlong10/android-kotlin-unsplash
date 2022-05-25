@@ -1,12 +1,10 @@
 package com.kotlin.unsplash.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
-import com.kotlin.unsplash.database.PhotoDB
 import com.kotlin.unsplash.database.PhotoDao
-import com.kotlin.unsplash.domain.Photo
-import com.kotlin.unsplash.domain.asDatabaseModel
+import com.kotlin.unsplash.models.Photo
+import com.kotlin.unsplash.models.asDatabaseModel
 import com.kotlin.unsplash.service.CLIENT_ID
 import com.kotlin.unsplash.service.UnsplashService
 import kotlinx.coroutines.Dispatchers

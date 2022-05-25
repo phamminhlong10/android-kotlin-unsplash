@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.unsplash.databinding.ItemTopicBinding
-import com.kotlin.unsplash.domain.Topic
+import com.kotlin.unsplash.models.Topic
 import com.kotlin.unsplash.util.OnClickListener
 
 class TopicListAdapter(private val onClickListener: OnClickListener<Topic>): ListAdapter<Topic, TopicListAdapter.ViewHolder>(DiffCallBackTopic()){

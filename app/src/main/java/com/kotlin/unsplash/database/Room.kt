@@ -3,7 +3,6 @@ package com.kotlin.unsplash.database
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.kotlin.unsplash.domain.Photo
 
 @Dao
 interface PhotoDao{

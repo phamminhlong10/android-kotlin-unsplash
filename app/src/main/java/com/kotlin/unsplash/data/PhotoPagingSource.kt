@@ -2,8 +2,8 @@ package com.kotlin.unsplash.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.kotlin.unsplash.domain.Photo
-import com.kotlin.unsplash.domain.Topic
+import com.kotlin.unsplash.models.Photo
+import com.kotlin.unsplash.models.Topic
 import com.kotlin.unsplash.service.CLIENT_ID
 import com.kotlin.unsplash.service.UnsplashService
 

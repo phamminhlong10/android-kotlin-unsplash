@@ -1,14 +1,9 @@
 package com.kotlin.unsplash.viewmodel
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.*
 import com.kotlin.unsplash.database.PhotoDB
 import com.kotlin.unsplash.database.PhotoDao
-import com.kotlin.unsplash.domain.Photo
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class GalleryViewModel(private val database: PhotoDao, application: Application): AndroidViewModel(application){
     private val _photos = database.getPhotos()

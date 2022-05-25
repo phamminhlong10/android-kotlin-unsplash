@@ -1,11 +1,8 @@
 package com.kotlin.unsplash.database
 
 import android.os.Parcelable
-import androidx.room.ColumnInfo
 import androidx.room.Entity
-import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
-import com.kotlin.unsplash.domain.UrlPhoto
 import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "photoDB_table")

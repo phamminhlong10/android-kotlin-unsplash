@@ -8,8 +8,8 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.kotlin.unsplash.data.PhotoPagingSource
 import com.kotlin.unsplash.data.TOPIC_PHOTO_SCREEN
-import com.kotlin.unsplash.domain.Photo
-import com.kotlin.unsplash.domain.Topic
+import com.kotlin.unsplash.models.Photo
+import com.kotlin.unsplash.models.Topic
 import com.kotlin.unsplash.service.UnsplashService
 import kotlinx.coroutines.flow.Flow
 

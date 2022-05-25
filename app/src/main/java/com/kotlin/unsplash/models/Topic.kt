@@ -1,4 +1,4 @@
-package com.kotlin.unsplash.domain
+package com.kotlin.unsplash.models
 
 import android.os.Parcelable
 import com.squareup.moshi.Json

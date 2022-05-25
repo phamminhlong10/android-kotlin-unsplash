@@ -3,7 +3,7 @@
     <data>
         <variable
             name="topic"
-            type="com.kotlin.unsplash.domain.Topic" />
+            type="com.kotlin.unsplash.models.Topic" />
     </data>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"

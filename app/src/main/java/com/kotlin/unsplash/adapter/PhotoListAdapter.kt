@@ -6,7 +6,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kotlin.unsplash.databinding.ItemImageBinding
-import com.kotlin.unsplash.domain.Photo
+import com.kotlin.unsplash.models.Photo
 import com.kotlin.unsplash.util.OnClickListener
 
 class PhotoListAdapter(private val onClickListener: OnClickListener<Photo>): PagingDataAdapter<Photo, PhotoListAdapter.ViewHolder>(PhotoDiffCallback()){

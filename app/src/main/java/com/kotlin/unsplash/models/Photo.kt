@@ -1,7 +1,6 @@
-package com.kotlin.unsplash.domain
+package com.kotlin.unsplash.models
 
 import android.os.Parcelable
-import androidx.room.Entity
 import com.kotlin.unsplash.database.PhotoDB
 import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize

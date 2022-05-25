@@ -1,7 +1,7 @@
 package com.kotlin.unsplash.service
 
-import com.kotlin.unsplash.domain.Photo
-import com.kotlin.unsplash.domain.Topic
+import com.kotlin.unsplash.models.Photo
+import com.kotlin.unsplash.models.Topic
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit

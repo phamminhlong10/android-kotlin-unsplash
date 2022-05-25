@@ -2,7 +2,7 @@ package com.kotlin.unsplash.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.kotlin.unsplash.domain.Topic
+import com.kotlin.unsplash.models.Topic
 import com.kotlin.unsplash.service.CLIENT_ID
 import com.kotlin.unsplash.service.UnsplashService
 import kotlinx.coroutines.launch

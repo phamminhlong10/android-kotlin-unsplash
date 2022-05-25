@@ -24,12 +24,12 @@
     <fragment
         android:id="@+id/topicPhotoFragment"
         android:name="com.kotlin.unsplash.ui.TopicPhotoFragment">
-        <argument
-            android:name="topic"
-            app:argType="com.kotlin.unsplash.domain.Topic" />
         <action
             android:id="@+id/action_topicPhotoFragment_to_photoDetailFragment"
             app:destination="@id/photoDetailFragment" />
+        <argument
+            android:name="topic"
+            app:argType="com.kotlin.unsplash.models.Topic" />
     </fragment>
     <fragment
         android:id="@+id/photoDetailFragment"
@@ -37,7 +37,7 @@
         tools:layout="@layout/fragment_photo_detail" >
         <argument
             android:name="photo"
-            app:argType="com.kotlin.unsplash.domain.Photo" />
+            app:argType="com.kotlin.unsplash.models.Photo" />
     </fragment>
     <fragment
         android:id="@+id/galleryFragment"
