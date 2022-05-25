@@ -18,69 +18,42 @@ import java.lang.Exception
 class WallpaperEvent {
 
     private fun onSetWallpaper(bitmap: Bitmap, context: Context){
-        CoroutineScope(Dispatchers.Main).launch{
-            setWallpaper(bitmap, context)
+        try{
+            val wallpaperManager = WallpaperManager.getInstance(context)
+            wallpaperManager.setBitmap(bitmap)
             Toast.makeText(context, "Set wallpaper successfully", Toast.LENGTH_LONG).show()
-        }
-    }
-
-    private suspend fun setWallpaper(bitmap: Bitmap, context: Context){
-        try{
-            withContext(Dispatchers.Default){
-                val wallpaperManager = WallpaperManager.getInstance(context)
-                wallpaperManager.setBitmap(bitmap)
-            }
-        }catch (e: Exception){
-            Log.e("Exception", e.toString())
-        }
-    }
-
-    private suspend fun setLockScreen(bitmap: Bitmap, context: Context){
-        try{
-            withContext(Dispatchers.Default){
-                val wallpaperManager = WallpaperManager.getInstance(context)
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-                    wallpaperManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_LOCK)
-                }
-            }
         }catch (e: Exception){
             Log.e("Exception", e.toString())
         }
     }
 
     private fun onSetLockScreen(bitmap: Bitmap, context: Context){
-        CoroutineScope(Dispatchers.Main).launch {
+        try{
+            val wallpaperManager = WallpaperManager.getInstance(context)
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-                setLockScreen(bitmap, context)
+                wallpaperManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_LOCK)
                 Toast.makeText(context, "Set wallpaper lockscreen", Toast.LENGTH_LONG).show()
             }else{
                 Toast.makeText(context, "Your system not supported for setting lock screen wallpaper ", Toast.LENGTH_LONG).show()
             }
-        }
-    }
-
-    private suspend fun setBoth(bitmap: Bitmap, context: Context){
-        try{
-            withContext(Dispatchers.Default){
-                val wallpaperManager = WallpaperManager.getInstance(context)
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-                    wallpaperManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_LOCK)
-                    wallpaperManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_SYSTEM)
-                }
-            }
         }catch (e: Exception){
             Log.e("Exception", e.toString())
         }
+
     }
 
     private fun onSetBoth(bitmap: Bitmap, context: Context){
-        CoroutineScope(Dispatchers.Main).launch {
+        try{
+            val wallpaperManager = WallpaperManager.getInstance(context)
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-                setBoth(bitmap, context)
+                wallpaperManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_LOCK)
+                wallpaperManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_SYSTEM)
                 Toast.makeText(context, "Set lockscreen & wallpaper successful", Toast.LENGTH_LONG).show()
             }else{
                 Toast.makeText(context, "Your system not supported for setting lock screen wallpaper ", Toast.LENGTH_LONG).show()
             }
+        }catch (e: Exception){
+            Log.e("Exception", e.toString())
         }
     }
 
@@ -95,10 +68,12 @@ class WallpaperEvent {
         contextFragment.let {
             MaterialAlertDialogBuilder(it).setTitle("Set Wallpaper")
                 .setItems(items){ _, which ->
-                    when(which){
-                        0 -> onSetWallpaper(bitmap, context)
-                        1 -> onSetLockScreen(bitmap, context)
-                        2 -> onSetBoth(bitmap,context)
+                    CoroutineScope(Dispatchers.Main).launch {
+                        when(which){
+                            0 -> onSetWallpaper(bitmap, context)
+                            1 -> onSetLockScreen(bitmap, context)
+                            2 -> onSetBoth(bitmap,context)
+                        }
                     }
                 }.show()
         }
