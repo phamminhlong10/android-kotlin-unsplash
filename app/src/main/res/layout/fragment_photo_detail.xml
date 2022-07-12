@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.kotlin.unsplash.viewmodel.PhotoDetailViewModel" />
+            type="com.kotlin.unsplash.features.presentation.viewmodel.PhotoDetailViewModel" />
     </data>
 
     <RelativeLayout

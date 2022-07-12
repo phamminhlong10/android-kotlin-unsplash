@@ -5,7 +5,7 @@
     <data>
         <variable
             name="photo"
-            type="com.kotlin.unsplash.models.Photo" />
+            type="com.kotlin.unsplash.features.domain.entities.Photo" />
     </data>
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"

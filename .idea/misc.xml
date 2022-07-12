@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android/android-kotlin-unsplash/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/android/android-kotlin-unsplash/app/src/main/res/layout/fragment_gallery.xml" value="0.196875" />
+        <entry key="..\:/android/android-kotlin-unsplash/app/src/main/res/layout/fragment_main.xml" value="0.196875" />
+        <entry key="..\:/android/android-kotlin-unsplash/app/src/main/res/layout/fragment_photo_d_b_detail.xml" value="0.196875" />
+        <entry key="..\:/android/android-kotlin-unsplash/app/src/main/res/layout/fragment_photo_detail.xml" value="0.18591691995947315" />
+        <entry key="..\:/android/android-kotlin-unsplash/app/src/main/res/layout/fragment_topic.xml" value="0.327445652173913" />
+        <entry key="..\:/android/android-kotlin-unsplash/app/src/main/res/layout/fragment_topic_photo.xml" value="0.327445652173913" />
+        <entry key="..\:/android/android-kotlin-unsplash/app/src/main/res/layout/item_image.xml" value="0.3351449275362319" />
+        <entry key="..\:/android/android-kotlin-unsplash/app/src/main/res/layout/item_image_gallery.xml" value="0.3351449275362319" />
+        <entry key="..\:/android/android-kotlin-unsplash/app/src/main/res/layout/item_topic.xml" value="0.3351449275362319" />
         <entry key="..\:/android/android_unsplash/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.228" />
         <entry key="..\:/android/android_unsplash/app/src/main/res/drawable/bottom_nav_color.xml" value="0.2465" />
         <entry key="..\:/android/android_unsplash/app/src/main/res/drawable/ic_baseline_camera_24.xml" value="0.2115" />

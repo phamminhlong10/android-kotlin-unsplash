@@ -6,7 +6,7 @@
     app:startDestination="@id/mainFragment">
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.kotlin.unsplash.ui.MainFragment"
+        android:name="com.kotlin.unsplash.features.presentation.ui.MainFragment"
         android:label="For you" >
         <action
             android:id="@+id/action_mainFragment_to_photoDetailFragment"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/topicFragment"
-        android:name="com.kotlin.unsplash.ui.TopicFragment"
+        android:name="com.kotlin.unsplash.features.presentation.ui.TopicFragment"
         android:label="Topics"
         tools:layout="@layout/fragment_topic" >
         <action
@@ -23,25 +23,25 @@
     </fragment>
     <fragment
         android:id="@+id/topicPhotoFragment"
-        android:name="com.kotlin.unsplash.ui.TopicPhotoFragment">
+        android:name="com.kotlin.unsplash.features.presentation.ui.TopicPhotoFragment">
         <action
             android:id="@+id/action_topicPhotoFragment_to_photoDetailFragment"
             app:destination="@id/photoDetailFragment" />
         <argument
             android:name="topic"
-            app:argType="com.kotlin.unsplash.models.Topic" />
+            app:argType="com.kotlin.unsplash.features.domain.entities.Topic" />
     </fragment>
     <fragment
         android:id="@+id/photoDetailFragment"
-        android:name="com.kotlin.unsplash.ui.PhotoDetailFragment"
+        android:name="com.kotlin.unsplash.features.presentation.ui.PhotoDetailFragment"
         tools:layout="@layout/fragment_photo_detail" >
         <argument
             android:name="photo"
-            app:argType="com.kotlin.unsplash.models.Photo" />
+            app:argType="com.kotlin.unsplash.features.domain.entities.Photo" />
     </fragment>
     <fragment
         android:id="@+id/galleryFragment"
-        android:name="com.kotlin.unsplash.ui.GalleryFragment"
+        android:name="com.kotlin.unsplash.features.presentation.ui.GalleryFragment"
         android:label="Your favorites"
         tools:layout="@layout/fragment_gallery" >
         <action
@@ -50,10 +50,10 @@
     </fragment>
     <fragment
         android:id="@+id/photoDBDetailFragment"
-        android:name="com.kotlin.unsplash.ui.PhotoDBDetailFragment"
+        android:name="com.kotlin.unsplash.features.presentation.ui.PhotoDBDetailFragment"
         android:label="PhotoDBDetailFragment" >
         <argument
             android:name="PhotoDB"
-            app:argType="com.kotlin.unsplash.database.PhotoDB" />
+            app:argType="com.kotlin.unsplash.features.data.models.PhotoDB" />
     </fragment>
 </navigation>

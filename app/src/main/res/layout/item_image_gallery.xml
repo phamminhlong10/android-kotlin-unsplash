@@ -5,7 +5,7 @@
     <data>
         <variable
             name="photoDB"
-            type="com.kotlin.unsplash.database.PhotoDB" />
+            type="com.kotlin.unsplash.features.data.models.PhotoDB" />
     </data>
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
